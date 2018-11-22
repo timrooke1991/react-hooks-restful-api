@@ -1,10 +1,8 @@
 const router = require('express').Router();
-const urlController = require('../controllers/users');
+const userController = require('../controllers/users');
 
-router.route('/')
-  .get(urlController.index)
-  .post(urlController.create);
-
-router.all('*', (req, res) => res.notFound());
+router.route('api/users')
+  .get(userController.index)
+  .post(userController.create);
 
 module.exports = router;

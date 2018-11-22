@@ -1,27 +1,28 @@
-const Url = require('../models/user');
+const User = require('../models/user');
 
-function indexUrl(req, res) {
-  console.log('showUrl function run');
+function indexUser(req, res, next) {
+  console.log('showUser function run');
 
-  Url.find()
-    .then(url => {
-      res.status(200).json(url);
+  User.find()
+    .then(users => {
+      console.log('hello', users);
+      res.status(200).json(users);
     })
     .catch(err => {
       next(err);
     });
 }
 
-function createUrl(req, res, next) {
+function createUser(req, res, next) {
   console.log(req.body);
-  Url.create(req.body)
-    .then(url => {
-      res.status(201).json(url);
+  User.create(req.body)
+    .then(user => {
+      res.status(201).json(user);
     })
     .catch(next);
 }
 
 module.exports = {
-  index: indexUrl,
-  create: createUrl
+  index: indexUser,
+  create: createUser
 };

@@ -36,7 +36,10 @@ module.exports = {
     port: 8000,
     open: true,
     proxy: {
-      '/': 'http://localhost:3030'
+      '/api': {
+        target: 'http://localhost:5000',
+        pathRewrite: { '^/api': '' }
+      }
     }
   },
   plugins: [
